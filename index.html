@@ -6,10 +6,14 @@
     background-size: cover;
   }
 </style>
+<div id="loading" style="position:absolute;width:100%;height:100%;left:0px;top:0px;background-color:black;color:white;text-align:center;"><h1><b>Loading...</b></h1></div>
 <script>
   window.onload=function(){
-    while (true){
-      window.location.reload();
-    }
+    document.getElementById("loading").style.display="none";
+    setTimeout(() => {
+      while (true){
+        window.location.reload();
+      }
+    },100);
   };
 </script>
