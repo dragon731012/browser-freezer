@@ -6,10 +6,17 @@
     background-size: cover;
   }
 </style>
-<div id="loading" style="position:absolute;width:100%;height:100%;left:0px;top:0px;background-color:black;color:white;text-align:center;"><h1><b>Loading...</b></h1></div>
+<div id="dcslk" style="position:absolute;width:100%;left:0px;top:0px;color:black;text-align:center;"><h1><b>dont click sus links kids</b></h1></div>
+<div id="loadingbg" style="position:absolute;width:100%;height:100%;left:0px;top:0px;background-color:black;color:white;text-align:center;"></div>
+<div id="loading" style="position:absolute;width:100%;left:0px;top:0px;background-color:black;color:white;text-align:center;"><h1><b>Loading...</b></h1></div>
 <script>
+  var loading=document.getElementById("loading");
+  loading.style.top=window.innerHeight/2-loading.offsetHeight/2;
+  var dcslk=document.getElementById("dcslk");
+  dcslk.style.top=window.innerHeight/2-dcslk.offsetHeight/2;
   window.onload=function(){
     document.getElementById("loading").style.display="none";
+    document.getElementById("loadingbg").style.display="none";
     setTimeout(() => {
       while (true){
         window.location.reload();
