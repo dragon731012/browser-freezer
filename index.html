@@ -10,15 +10,26 @@
 <div id="loadingbg" style="position:absolute;width:100%;height:100%;left:0px;top:0px;background-color:black;color:white;text-align:center;"></div>
 <div id="loading" style="position:absolute;width:100%;left:0px;top:0px;background-color:black;color:white;text-align:center;"><h1><b>Loading...</b></h1></div>
 <script>
+  window.onbeforeunload = closingCode;
+  function closingCode(){
+     localStorage.setItem("opened","false");
+     return null;
+  }
+  
   if (Notification.permission !== "granted") {
     alert("popup premission needed to hide this from your history");
     Notification.requestPermission().then((result) => {
       console.log(result); // 'granted', 'denied', or 'default'
       if (result=="granted"){
+        localStorage.setItem("opened","true");
         window.open(window.location.href);
       }
     }
 
+    if (localStorage.getItem("opened")!="true"){
+      window.open(window.location.href);
+    }
+                                          
     const bc = new BroadcastChannel("close-channel");
 window.addEventListener("beforeunload", (e) => {
     bc.postMessage("close");
