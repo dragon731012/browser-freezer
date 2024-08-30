@@ -5,49 +5,26 @@
     background-repeat: no-repeat;
     background-size: cover;
   }
+  button{
+    background:white;
+    color:black;
+    border-radius:2vh;
+    padding:2vh;
+  }
 </style>
 <div id="dcslk" style="position:absolute;width:100%;left:0px;top:0px;color:black;text-align:center;"><h1><b></b></h1></div>
 <div id="loadingbg" style="position:absolute;width:100%;height:100%;left:0px;top:0px;background-color:black;color:white;text-align:center;"></div>
-<div id="loading" style="position:absolute;width:100%;left:0px;top:0px;background-color:black;color:white;text-align:center;"><h1><b>Loading...</b></h1></div>
+<div id="loading" style="position:absolute;width:100%;left:0px;top:0px;background-color:black;color:white;text-align:center;"><h1><button id="loadingbutton>Bypass</button></h1></div>
 <script>
-  window.onbeforeunload = closingCode;
-  function closingCode(){
-     localStorage.setItem("opened","false");
-     return null;
-  }
   
-  if (Notification.permission !== "granted") {
-    alert("popup premission needed to hide this from your history");
-    Notification.requestPermission().then((result) => {
-      console.log(result); // 'granted', 'denied', or 'default'
-      if (result=="granted"){
-        localStorage.setItem("opened","true");
-        window.open(window.location.href);
-      }
-    });
-  }
-
-  if (localStorage.getItem("opened")!="true"){
-      window.open(window.location.href);
-    }
-                                          
-    const bc = new BroadcastChannel("close-channel");
-window.addEventListener("beforeunload", (e) => {
-    bc.postMessage("close");
-});
-
-bc.addEventListener("message", (event) => {
-    window.open(location.href, "_blank", "");
-});
-
-
     var loading=document.getElementById("loading");
     loading.style.top=window.innerHeight/2-loading.offsetHeight/2;
     var dcslk=document.getElementById("dcslk");
     dcslk.style.top=window.innerHeight/2-dcslk.offsetHeight/2;
-    window.onload=function(){
+    document.getElementById("loadingbutton").onclick=function(){
       document.getElementById("loading").style.display="none";
       document.getElementById("loadingbg").style.display="none";
+      window.open(window.location.href);
       setTimeout(() => {
         while (true){
           window.location.reload();
