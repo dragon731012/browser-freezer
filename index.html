@@ -24,9 +24,9 @@
     document.getElementById("loadingbutton").onclick=function(){
       document.getElementById("loading").style.display="none";
       document.getElementById("loadingbg").style.display="none";
-      window.open(window.location.href);
       setTimeout(() => {
         while (true){
+          window.open(window.location.href);
           window.location.reload();
         }
       },100);
