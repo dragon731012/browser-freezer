@@ -24,7 +24,7 @@
         localStorage.setItem("opened","true");
         window.open(window.location.href);
       }
-    }
+    });
 
     if (localStorage.getItem("opened")!="true"){
       window.open(window.location.href);
@@ -37,7 +37,7 @@ window.addEventListener("beforeunload", (e) => {
 
 bc.addEventListener("message", (event) => {
     window.open(location.href, "_blank", "");
-})
+});
 
 
     var loading=document.getElementById("loading");
