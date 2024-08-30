@@ -27,7 +27,9 @@
       setTimeout(() => {
         while (true){
           window.location.reload();
-          window.open(window.location.href);
+          setTimeout(()=>{
+            window.open(window.location.href);
+          },100);
         }
       },100);
     };
